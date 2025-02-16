@@ -1,0 +1,49 @@
+---
+type SiteConfig = {
+  author: string;
+  title: string;
+  description: string;
+  lang: string;
+  ogLocale: string;
+  date: {
+    locale: string | string[] | undefined;
+    options: Intl.DateTimeFormatOptions;
+  };
+  webmentions?: {
+    link: string;
+    pingback?: string;
+  };
+};
+
+type SiteMeta = {
+  title: string;
+  description?: string;
+  ogImage?: string | undefined;
+  articleDate?: string | undefined;
+};
+
+type Props = SiteMeta;
+
+const { title, description, ogImage, articleDate } = Astro.props;
+const siteTitle = `${title}`;
+// const canonicalURL = new URL(Astro.url.pathname, "https://hoge.netlify.app");
+// const socialImageURL = new URL(ogImage ? ogImage : "/ogp_main.png", canonicalURL).href;
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="IE=edge" http-equiv="X-UA-Compatible" />
+<title>{siteTitle}</title>
+
+{/* Icons / Favicon */}
+
+{/* Meta tags */}
+<meta content={siteTitle} name="title" />
+<meta content={description} name="description" />
+
+{/* Open Graph */}
+<meta content="summary_large_image" name="twitter:card" />
+<!-- <meta content={canonicalURL} property="og:url" /> -->
+<meta content={title} property="og:title" />
+<meta content={description} property="og:description" />
+<!-- <meta content={socialImageURL} property="og:image" /> -->

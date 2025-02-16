@@ -1,0 +1,128 @@
+---
+import PostList from "@/components/PostList.astro";
+import ProjectList from "@/components/ProjectList.astro";
+import Layout from "@/layouts/Layout.astro";
+import { getAllPosts } from "@/utils/post";
+import { getAllProjects } from "@/utils/project";
+
+const pageTitle = "Hello!!";
+
+const sns = [
+  {
+    name: "rie03p",
+    url: "https://github.com/rie03p",
+    icon: "/icons/github-icon.svg",
+  },
+  {
+    name: "Rie",
+    url: "https://www.pixiv.net/users/103967837",
+    icon: "/icons/pixiv-icon.png",
+  },
+];
+
+const allPosts = await getAllPosts();
+const blogEntries = allPosts.slice(-5).reverse();
+const allProjects = await getAllProjects();
+const projectEntries = allProjects.slice(0, 3);
+// TODO: setting meta
+const meta = {
+  title: "Home - Rie",
+  description: "This is Rie's Homepage.",
+};
+---
+
+<Layout meta={meta}>
+  <h1>{pageTitle}</h1>
+  <div class="profile">
+    <img class="profile__icon" src="/profile_icon.png" alt="rie" width="150" height="150" />
+    <p class="profile__name">Rie</p>
+  </div>
+  <div class="introduction">
+    <article class="introductionBox">
+      <p>エンジニアです。</p>
+      <p>少しポーカーの勉強をしています。基本NLHですが、PLOやStudもします。</p>
+      <p>
+        休日は大抵パソコンと向き合ってイラストを描いたりしていますが、外に出る時はカメラを持ち写真を撮ることが好きです。
+      </p>
+    </article>
+    <section class="introductionBox">
+      <h2>Hobby</h2>
+      <p>お絵描き、プログラミング、読書、ポーカー</p>
+    </section>
+
+    <section class="introductionBox">
+      <h2>SNS</h2>
+      <div class="introductionBox__snsIcons">
+        {
+          sns.map(sns => (
+            <a class="introductionBox__snsIcons--link" href={sns.url}>
+              <img src={sns.icon} alt={sns.name} height="30" width="30" />
+              <p> - {sns.name}</p>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+    <section class="introductionBox">
+      <h2>Posts</h2>
+      <PostList postList={blogEntries} isTagsVisible={false} />
+    </section>
+    <!-- <section class="introductionBox"> -->
+    <!-- <h2>Projects</h2> -->
+    <!-- <ProjectList projectList={projectEntries} /> -->
+  </div>
+</Layout>
+
+<style lang="scss">
+  .profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &__icon {
+      border-radius: 50%;
+    }
+    &__name {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+  }
+  .introduction {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    & p {
+      margin: 0 8px;
+    }
+
+    &Box {
+      h2 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+      }
+
+      &__icons {
+        display: flex;
+        gap: 1rem;
+        margin: 0 8px;
+      }
+
+      &__snsIcons {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1rem;
+        margin: 0 8px;
+
+        &--link {
+          display: flex;
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+</style>

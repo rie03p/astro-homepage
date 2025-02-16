@@ -1,0 +1,21 @@
+---
+import PostPreview from "@/components/PostPreview.astro";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  postList: CollectionEntry<"post">[];
+  isTagsVisible: boolean;
+}
+
+const { postList, isTagsVisible } = Astro.props;
+---
+
+<ul class="posts">
+  {
+    postList.map(post => (
+      <li>
+        <PostPreview post={post} isTagsVisible={isTagsVisible} />
+      </li>
+    ))
+  }
+</ul>

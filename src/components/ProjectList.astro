@@ -1,0 +1,28 @@
+---
+import ProjectPreview from "@/components/ProjectPreview.astro";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  projectList: CollectionEntry<"projects">[];
+}
+
+const { projectList } = Astro.props;
+---
+
+<ul class="projects">
+  {
+    projectList.map(project => (
+      <li>
+        <ProjectPreview project={project} />
+      </li>
+    ))
+  }
+</ul>
+
+<style lang="scss">
+  .projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+    gap: 1rem;
+  }
+</style>

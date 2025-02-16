@@ -1,0 +1,42 @@
+---
+import { getFormatDate } from "@/utils/date";
+import type { CollectionEntry } from "astro:content";
+import TagList from "@/components/TagList.astro";
+
+interface Props {
+  post: CollectionEntry<"post">;
+  isTagsVisible?: boolean;
+}
+
+const { post, isTagsVisible } = Astro.props;
+const postDate = getFormatDate(post.data.publishDate);
+---
+
+<section class="postPreview">
+  <div class="postPreview__head">
+    <p>{postDate}</p>
+    <a href={`/posts/${post.slug}`}>
+      <h3>{post.data.title}</h3>
+    </a>
+  </div>
+  {isTagsVisible && <TagList tagList={post.data.tags} />}
+  <hr class="postPreview__divider" />
+</section>
+
+<style lang="scss">
+  .postPreview {
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    gap: 8px;
+
+    & h3 {
+      font-size: 1.25rem;
+      font-weight: bold;
+    }
+
+    &__divider {
+      border-top: 1px solid $text-light;
+    }
+  }
+</style>

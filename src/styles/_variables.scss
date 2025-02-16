@@ -1,0 +1,27 @@
+/* stylelint-disable */
+$max-content-width: 650px !default;
+$mobile-content-width: 350px !default;
+
+$breakpoints: (
+  "sp": "screen and (max-width: 700px)",
+) !default;
+
+@mixin mediaQuery($breakpoint: "sp") {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+/* font */
+$default-font: "Zen Maru Gothic", serif;
+
+/* color */
+$background-dark: #1e1e2e;
+$background-light: #f0f8f2;
+$text-dark: #f0f8f2;
+$text-light: #1e1e2e;
+$text-link-dark: #78c2ad;
+$text-link-light: #ee336b;
+$tag-dark: #407ca2;
+$tag-light: #b51f3d;
+$underline: #375a7f;

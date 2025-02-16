@@ -1,0 +1,19 @@
+---
+import { getAllPosts, getUniqueTags, sortPostsByDate } from "@/utils/post";
+import Layout from "@/layouts/Layout.astro";
+import ProjectList from "@/components/ProjectList.astro";
+import { getAllProjects } from "@/utils/project";
+
+const allProjects = await getAllProjects();
+const pageTitle = "Projects";
+// TODO: setting meta
+const meta = {
+  title: "Projects - Rie",
+  description: undefined,
+};
+---
+
+<Layout meta={meta}>
+  <h1>{pageTitle}</h1>
+  <ProjectList projectList={allProjects} />
+</Layout>

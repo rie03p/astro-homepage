@@ -1,0 +1,97 @@
+---
+
+---
+
+<header class="header">
+  <div class="header__title">
+    <a href="/"><img src="/title.png" width="100" height="44" alt="title" /></a>
+  </div>
+  <div class="header__menu">
+    <a href="/">Top</a>
+    <!-- <a href="/projects">Project</a> -->
+    <a href="/blog">Blog</a>
+  </div>
+  <details class="header__mobileMenu">
+    <summary class="header__mobileMenuTrigger">
+      <img class="header__mobileMenuTrigger--burger" src="/icons/menu-burger.svg" width="20" height="20" alt="menu" />
+      <img class="header__mobileMenuTrigger--cross" src="/icons/cross.svg" width="15" height="15" alt="cross" />
+    </summary>
+    <div class="header__mobileMenu--popdown" id="header-menu">
+      <a href="/">Top</a>
+      <!-- <a href="/projects">Project</a> -->
+      <a href="/blog">Blog</a>
+    </div>
+  </details>
+</header>
+
+<style lang="scss">
+  .header {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1.5rem 0;
+
+    &__menu {
+      display: flex;
+      align-items: center;
+      font-size: 1.2rem;
+      gap: 1.5rem;
+
+      @include mediaQuery("sp") {
+        display: none;
+      }
+    }
+
+    &__mobileMenu {
+      display: none;
+
+      @include mediaQuery("sp") {
+        display: block;
+      }
+
+      &Trigger {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+
+        &--burger {
+          display: block;
+          details[open] & {
+            display: none;
+          }
+        }
+
+        &--cross {
+          display: none;
+          details[open] & {
+            display: block;
+            filter: brightness(0) saturate(100%) invert(28%) sepia(97%) saturate(6706%) hue-rotate(346deg)
+              brightness(102%) contrast(104%);
+          }
+        }
+      }
+
+      &--popdown {
+        display: flex;
+        flex-direction: column;
+        text-align: end;
+        gap: 1rem;
+        font-weight: bold;
+        color: $text-link-light;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: 0;
+        padding: 1rem;
+        backdrop-filter: blur(20px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        z-index: 1000;
+      }
+    }
+  }
+</style>

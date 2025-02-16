@@ -1,0 +1,57 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  project: CollectionEntry<"projects">;
+}
+
+const { project }: Props = Astro.props;
+---
+
+<section class="projectCard">
+  <a href={`/projects/${project.slug}`}>
+    <img src={project.data.image} alt="ProjectImage" width="310" height="155" alt="projectImage" />
+    <h3>{project.data.title}</h3>
+    <p>{project.data.description}</p>
+  </a>
+</section>
+
+<style lang="scss">
+  .projectCard {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+
+    & img {
+      border-radius: 4px;
+    }
+
+    & h3 {
+      font-size: 1.25rem;
+      margin-top: 8px;
+      margin-bottom: 4px;
+      word-wrap: break-word;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+
+    & p {
+      font-size: 16px;
+      line-height: 1.5;
+      word-wrap: break-word;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      flex-grow: 1;
+    }
+  }
+</style>
