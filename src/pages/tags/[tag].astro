@@ -7,7 +7,7 @@ import PostList from "@/components/PostList.astro";
 
 export const getStaticPaths = async () => {
   const allPosts = await getAllPosts();
-  const tags = await getUniqueTags();
+  const tags = getUniqueTags(allPosts);
 
   return tags.map(tag => {
     const filterPosts = allPosts.filter(post => post.data.tags.includes(tag));

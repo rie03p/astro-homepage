@@ -1,10 +1,11 @@
 ---
 import TagList from "@/components/TagList.astro";
 import Layout from "../../layouts/Layout.astro";
-import { getUniqueTags } from "@/utils/post";
+import { getAllPosts, getUniqueTags } from "@/utils/post";
 
 const pageTitle = "Tags";
-const allTags = await getUniqueTags();
+const allPosts = await getAllPosts();
+const allTags = getUniqueTags(allPosts);
 // TODO: setting meta
 const meta = {
   description: "test",
