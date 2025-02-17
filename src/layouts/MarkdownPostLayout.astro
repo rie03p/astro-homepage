@@ -12,7 +12,7 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 
 const {
-  data: { title, description, publishDate, author, tags },
+  data: { title, description, publishDate, tags },
 } = post;
 const articleDate = getFormatDate(publishDate);
 ---
