@@ -6,7 +6,7 @@ import TagList from "@/components/TagList.astro";
 
 const allPosts = await getAllPosts();
 const sortPosts = sortPostsByDate(allPosts);
-const allTags = await getUniqueTags();
+const allTags = getUniqueTags(allPosts);
 
 const pageTitle = "Blog";
 // TODO: setting meta
