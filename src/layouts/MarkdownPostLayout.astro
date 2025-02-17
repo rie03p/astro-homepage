@@ -113,12 +113,22 @@ const articleDate = getFormatDate(publishDate);
     /* 箇条書き */
     ul,
     ol {
-      margin: 1.25rem 0;
-      padding-left: 2rem;
+      margin: 0.5rem 0;
+      padding-left: 1rem;
 
       li {
         margin-bottom: 0.5rem;
       }
+    }
+
+    /* Unordered List: ドット表示 */
+    ul {
+      list-style-type: disc;
+    }
+
+    /* Ordered List: 番号付き */
+    ol {
+      list-style-type: decimal;
     }
 
     /* 引用 */
