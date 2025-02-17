@@ -31,6 +31,25 @@ const articleDate = getFormatDate(publishDate);
 </Layout>
 
 <style lang="scss" is:global>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .heading-link-icon {
+    width: 20px;
+    height: 20px;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .postContent h2:hover .heading-link-icon,
+  .postContent h3:hover .heading-link-icon,
+  .postContent h4:hover .heading-link-icon,
+  .postContent h5:hover .heading-link-icon,
+  .postContent h6:hover .heading-link-icon {
+    opacity: 1;
+  }
+
   .postTitle {
     display: flex;
     flex-direction: column;
@@ -58,9 +77,14 @@ const articleDate = getFormatDate(publishDate);
     h4,
     h5,
     h6 {
+      display: flex;
       font-weight: 700;
       margin: 2rem 0 1rem;
       line-height: 1.25;
+      
+      img {
+        margin: 0 0.5rem;
+      }
     }
 
     h1 {
@@ -222,3 +246,29 @@ const articleDate = getFormatDate(publishDate);
     }
   }
 </style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const headings = document.querySelectorAll(
+      ".postContent h2, .postContent h3, .postContent h4, .postContent h5, .postContent h6"
+    );
+    headings.forEach(headingEl => {
+      const heading = headingEl as HTMLElement;
+      if (heading.id) {
+        heading.style.cursor = "pointer";
+
+        const linkIcon = document.createElement("img");
+        linkIcon.src = "/icons/link.svg";
+        linkIcon.className = "heading-link-icon";
+        linkIcon.alt = "link";
+        heading.appendChild(linkIcon);
+
+        heading.addEventListener("click", (event) => {
+          event.preventDefault();
+          heading.scrollIntoView({ behavior: "smooth" });
+          history.replaceState(null, "", `#${heading.id}`);
+        });
+      }
+    });
+  });
+</script>
