@@ -2,9 +2,7 @@ import React from 'react'
 import { Resvg } from '@resvg/resvg-js'
 import satori from 'satori'
 
-import RegularFont from '../assets/NotoSansJP-Regular.ttf'
 import BoldFont from '../assets/NotoSansJP-Bold.ttf'
-import { getStaticPaths } from 'src/pages/posts/ogp/[...slug].png'
 
 const generateOgpImage = async (element: React.ReactNode) => {
   const svg = await satori(
@@ -13,12 +11,6 @@ const generateOgpImage = async (element: React.ReactNode) => {
       width: 1200,
       height: 630,
       fonts: [
-        {
-          name: "Noto Sans JP",
-          data: Buffer.from(RegularFont),
-          style: "normal",
-          weight: 400,
-        },
         {
           name: "Noto Sans JP",
           data: Buffer.from(BoldFont),
