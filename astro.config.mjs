@@ -5,11 +5,11 @@ import { expressiveCodeOptions } from "./src/site.config";
 
 import sitemap from "@astrojs/sitemap";
 
-const rawFonts = (ext) => {
+const rawFonts = ext => {
   return {
     name: "vite-plugin-raw-fonts",
     transform(_, id) {
-      if (ext.some((e) => id.endsWith(e))) {
+      if (ext.some(e => id.endsWith(e))) {
         const buffer = fs.readFileSync(id);
         return {
           code: `export default ${JSON.stringify(buffer)}`,
@@ -18,7 +18,7 @@ const rawFonts = (ext) => {
       }
     },
   };
-}
+};
 
 // https://astro.build/config
 export default defineConfig({
@@ -35,5 +35,3 @@ export default defineConfig({
     },
   },
 });
-
-

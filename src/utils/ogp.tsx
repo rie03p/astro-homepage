@@ -1,37 +1,34 @@
-import React from 'react'
-import { Resvg } from '@resvg/resvg-js'
-import satori from 'satori'
+import React from "react";
+import { Resvg } from "@resvg/resvg-js";
+import satori from "satori";
 
-import BoldFont from '../assets/NotoSansJP-Bold.ttf'
+import BoldFont from "../assets/NotoSansJP-Bold.ttf";
 
 const generateOgpImage = async (element: React.ReactNode) => {
-  const svg = await satori(
-    element,
-    {
-      width: 1200,
-      height: 630,
-      fonts: [
-        {
-          name: "Noto Sans JP",
-          data: Buffer.from(BoldFont),
-          style: "normal",
-          weight: 600,
-        }
-      ]
-    },
-  )
+  const svg = await satori(element, {
+    width: 1200,
+    height: 630,
+    fonts: [
+      {
+        name: "Noto Sans JP",
+        data: Buffer.from(BoldFont),
+        style: "normal",
+        weight: 600,
+      },
+    ],
+  });
 
   const resvg = new Resvg(svg, {
     fitTo: {
       mode: "width",
       value: 1200,
-    }
-  })
+    },
+  });
 
   const image = resvg.render();
 
   return image.asPng();
-}
+};
 
 export const generateBlogPostOgpImage = (title: string) => {
   const element = (
@@ -92,9 +89,8 @@ export const generateBlogPostOgpImage = (title: string) => {
           rienote
         </span>
       </div>
-      
     </div>
   );
 
   return generateOgpImage(element);
-}
+};
