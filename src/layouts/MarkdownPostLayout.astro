@@ -15,10 +15,10 @@ const {
   data: { title, description, publishDate, tags },
 } = post;
 const articleDate = getFormatDate(publishDate);
+const ogImageUrl = "/ogp.png";
 ---
 
-{/* TODO: setting ogImage */}
-<Layout meta={{ title, description, articleDate }}>
+<Layout meta={{ title, description, articleDate, ogImage: ogImageUrl }}>
   <section class="postTitle">
     <p class="postTitle__date">Publication Date: {articleDate}</p>
     <h1 class="postTitle__title">{title}</h1>

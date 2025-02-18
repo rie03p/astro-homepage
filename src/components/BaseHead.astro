@@ -25,8 +25,8 @@ type Props = SiteMeta;
 
 const { title, description, ogImage, articleDate } = Astro.props;
 const siteTitle = `${title}`;
-// const canonicalURL = new URL(Astro.url.pathname, "https://hoge.netlify.app");
-// const socialImageURL = new URL(ogImage ? ogImage : "/ogp_main.png", canonicalURL).href;
+const canonicalURL = new URL(Astro.url.pathname, "https://rieogen.com");
+const socialImageURL = new URL(ogImage ? ogImage : "/ogp_main.png", canonicalURL).href;
 ---
 
 <meta charset="utf-8" />
@@ -42,7 +42,7 @@ const siteTitle = `${title}`;
 
 {/* Open Graph */}
 <meta content="summary_large_image" name="twitter:card" />
-<!-- <meta content={canonicalURL} property="og:url" /> -->
+<meta content={canonicalURL} property="og:url" />
 <meta content={title} property="og:title" />
 <meta content={description} property="og:description" />
-<!-- <meta content={socialImageURL} property="og:image" /> -->
+<meta content={socialImageURL} property="og:image" />
