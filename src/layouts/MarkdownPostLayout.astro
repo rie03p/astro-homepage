@@ -15,10 +15,10 @@ const {
   data: { title, description, publishDate, tags },
 } = post;
 const articleDate = getFormatDate(publishDate);
+const ogImageUrl = "/ogp.png";
 ---
 
-{/* TODO: setting ogImage */}
-<Layout meta={{ title, description, articleDate }}>
+<Layout meta={{ title, description, articleDate, ogImage: ogImageUrl }}>
   <section class="postTitle">
     <p class="postTitle__date">Publication Date: {articleDate}</p>
     <h1 class="postTitle__title">{title}</h1>
@@ -81,7 +81,7 @@ const articleDate = getFormatDate(publishDate);
       font-weight: 700;
       margin: 2rem 0 1rem;
       line-height: 1.25;
-      
+
       img {
         margin: 0 0.5rem;
       }
@@ -263,7 +263,7 @@ const articleDate = getFormatDate(publishDate);
         linkIcon.alt = "link";
         heading.appendChild(linkIcon);
 
-        heading.addEventListener("click", (event) => {
+        heading.addEventListener("click", event => {
           event.preventDefault();
           heading.scrollIntoView({ behavior: "smooth" });
           history.replaceState(null, "", `#${heading.id}`);
