@@ -15,7 +15,7 @@ const {
   data: { title, description, publishDate, tags },
 } = post;
 const articleDate = getFormatDate(publishDate);
-const ogImageUrl = "/ogp.png";
+const ogImageUrl = `/posts/ogp/${post.slug}.png`;
 ---
 
 <Layout meta={{ title, description, articleDate, ogImage: ogImageUrl }}>
