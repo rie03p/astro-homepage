@@ -25,7 +25,7 @@ type Props = SiteMeta;
 
 const { title, description, ogImage, articleDate } = Astro.props;
 const siteTitle = `${title}`;
-const canonicalURL = new URL(Astro.url.pathname, "https://rieogen.com");
+const canonicalURL = new URL(Astro.url.pathname, "https://astro-homepage.netlify.app");
 const socialImageURL = new URL(ogImage ? ogImage : "/ogp_main.png", canonicalURL).href;
 ---
 
