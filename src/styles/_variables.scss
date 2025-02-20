@@ -1,11 +1,11 @@
 @use "sass:map";
 
 /* stylelint-disable */
-$max-content-width: 650px !default;
+$max-content-width: 750px !default;
 $mobile-content-width: 350px !default;
 
 $breakpoints: (
-  "sp": "screen and (max-width: 700px)",
+  "sp": "screen and (max-width: 750px)",
 ) !default;
 
 @mixin mediaQuery($breakpoint: "sp") {
