@@ -245,6 +245,116 @@ const ogImageUrl = `/posts/ogp/${post.slug}.png`;
     s {
       text-decoration: line-through;
     }
+
+    /* --- Admonition の基本スタイル --- */
+    .admonition {
+      border-left: 5px solid;
+      padding: 16px;
+      margin: 1em 0;
+
+      p {
+        margin: 0;
+        margin-top: 8px;
+      }
+    }
+
+    /* admonition-title の左側にアイコンを配置するためのスタイル */
+    .admonition .admonition-title {
+      position: relative;
+      padding-left: 32px;
+      font-size: 20px;
+      font-weight: bold;
+      margin: 0;
+    }
+    .admonition .admonition-title::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 24px;
+      height: 24px;
+      display: inline-block;
+      /* mask プロパティで SVG のシルエットを currentColor で表示 */
+      mask-size: contain;
+      mask-repeat: no-repeat;
+      mask-position: center;
+      -webkit-mask-size: contain;
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-position: center;
+      background-color: currentColor;
+    }
+
+    /* --- 各 admonition タイプごとのスタイル --- */
+    /* Tip */
+    .admonition[data-admonition-type="tip"] {
+      border-color: #28a745;
+      background-color: #f3fff3;
+
+      .admonition-title {
+        color: #28a745;
+      }
+    }
+    .admonition[data-admonition-type="tip"] .admonition-title::before {
+      mask-image: url("/icons/tip.svg");
+      -webkit-mask-image: url("/icons/tip.svg");
+    }
+
+    /* Note */
+    .admonition[data-admonition-type="note"] {
+      border-color: #007acc;
+      background-color: #f4faff;
+
+      .admonition-title {
+        color: #007acc;
+      }
+    }
+    .admonition[data-admonition-type="note"] .admonition-title::before {
+      mask-image: url("/icons/note.svg");
+      -webkit-mask-image: url("/icons/note.svg");
+    }
+
+    /* Important */
+    .admonition[data-admonition-type="important"] {
+      border-color: #800080;
+      background-color: #fef6ff;
+
+      .admonition-title {
+        color: #800080;
+      }
+    }
+    .admonition[data-admonition-type="important"] .admonition-title::before {
+      mask-image: url("/icons/important.svg");
+      -webkit-mask-image: url("/icons/important.svg");
+    }
+
+    /* Caution */
+    .admonition[data-admonition-type="caution"] {
+      border-color: #fd7e14;
+      background-color: #fff9f0;
+
+      .admonition-title {
+        color: #fd7e14;
+      }
+    }
+    .admonition[data-admonition-type="caution"] .admonition-title::before {
+      mask-image: url("/icons/caution.svg");
+      -webkit-mask-image: url("/icons/caution.svg");
+    }
+
+    /* Warning */
+    .admonition[data-admonition-type="warning"] {
+      border-color: #dc3545;
+      background-color: #fff2f2;
+
+      .admonition-title {
+        color: #dc3545;
+      }
+    }
+    .admonition[data-admonition-type="warning"] .admonition-title::before {
+      mask-image: url("/icons/warning.svg");
+      -webkit-mask-image: url("/icons/warning.svg");
+    }
   }
 </style>
 

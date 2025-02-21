@@ -4,6 +4,10 @@ import expressiveCode from "astro-expressive-code";
 import { expressiveCodeOptions } from "./src/site.config";
 import sitemap from "@astrojs/sitemap";
 
+// Remark plugins
+import remarkDirective from "remark-directive";
+import { remarkAdmonitions } from "./src/plugins/remark-admonitions";
+
 const rawFonts = ext => {
   return {
     name: "vite-plugin-raw-fonts",
@@ -36,5 +40,8 @@ export default defineConfig({
         },
       },
     },
+  },
+  markdown: {
+    remarkPlugins: [remarkDirective, remarkAdmonitions],
   },
 });
